@@ -23,6 +23,7 @@
         app:layout_constraintLeft_toRightOf="@id/need_sample"/>
 
     <Button
+        android:id="@+id/Need_remove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="X"
@@ -31,6 +32,7 @@
         app:layout_constraintLeft_toRightOf="@id/sample_radio"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/Need_floaty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
