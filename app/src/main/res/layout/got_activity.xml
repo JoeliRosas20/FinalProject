@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/sample"
+        android:id="@+id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Got List"
@@ -16,15 +16,17 @@
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <Button
+        android:id="@+id/removeButt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="X"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/sample"
+        app:layout_constraintLeft_toRightOf="@id/list"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floaty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"

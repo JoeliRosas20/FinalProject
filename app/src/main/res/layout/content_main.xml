@@ -6,7 +6,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <Button
-        android:id="@+id/Got_btn"
+        android:id="@+id/sample_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Shoe's List"
@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Food List"
-        app:layout_constraintTop_toBottomOf="@id/Got_btn"
+        app:layout_constraintTop_toBottomOf="@id/sample_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
