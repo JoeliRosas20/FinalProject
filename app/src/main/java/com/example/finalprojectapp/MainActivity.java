@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 Log.d(NAME, "Helper Adding it");
                 String item = input.getText().toString();
+                Log.d(NAME, item);
                 if (TextUtils.isEmpty(item)){
                     Toast.makeText(MainActivity.this, "Please put something", Toast.LENGTH_LONG).show();
                 }
@@ -115,6 +116,9 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if (id == R.id.info){
+            
         }
         return super.onOptionsItemSelected(item);
     }

@@ -14,23 +14,35 @@ import java.util.LinkedList;
 
 public class ListDBHelper extends SQLiteOpenHelper {
 
+    private static final String NAME = "LISTDBHELPER";
     public static final String DATABASE_NAME = "test";
     public static final int DATABASE_VERSION = 1;
+    //This for the names of the list
     public static final String TABLE_NAME = "List";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";
-    private static final String NAME = "LISTDBHELPER";
+    //This is for the items that are within the lists
+    public static final String ITEM_TABLE_NAME = "Item";
+    public static final String ITEM_COLUMN_ID = "item_id";
+    public static final String ITEM_COLUMN_NAME = "item_name";
 
     public ListDBHelper(Context context) { super(context, DATABASE_NAME, null, DATABASE_VERSION); }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d(NAME, "Inside onCreate");
+        //List Table
         String SQL_CREATE_LIST_TABLE = "CREATE TABLE " +
                 TABLE_NAME + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY," +
                 COLUMN_NAME + " TEXT" + ") ";
+        //Item Table
+        String SQL_CREATE_ITEM_TABLE = "CREATE TABLE " +
+                ITEM_TABLE_NAME + " (" +
+                ITEM_COLUMN_ID + " INTEGER PRIMARY KEY," +
+                ITEM_COLUMN_NAME + " TEXT" + ") ";
         db.execSQL(SQL_CREATE_LIST_TABLE);
+        //db.execSQL(SQL_CREATE_ITEM_TABLE);
         Log.d(NAME, "Leaving onCreate");
     }
 
@@ -38,6 +50,7 @@ public class ListDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(NAME, "Inside onUpgrade");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        //db.execSQL("DROP TABLE IF EXISTS " + ITEM_TABLE_NAME);
         onCreate(db);
         Log.d(NAME, "Leaving onCreate");
     }
@@ -75,6 +88,8 @@ public class ListDBHelper extends SQLiteOpenHelper {
         Log.d(NAME, "Leaving addList");
     }
 
+    public void addItem(){}
+
     public void updateList(String list){
         Log.d(NAME, "Inside updateList");
         ContentValues values = new ContentValues();
@@ -90,5 +105,7 @@ public class ListDBHelper extends SQLiteOpenHelper {
         db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
         Log.d(NAME, "Leaving deleteList");
     }
+
+    public void deleteItem(int id){}
 
 }

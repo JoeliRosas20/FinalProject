@@ -13,9 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ListActivity extends AppCompatActivity {
     private Button gotBtn;
     private Button needBtn;
+    private final String NAME = "ListActivity";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.d("ListOnCreate", "Inside onCreate");
+        Log.d(NAME, "Inside onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_activity);
         gotBtn = findViewById(R.id.got_button);
@@ -23,10 +24,10 @@ public class ListActivity extends AppCompatActivity {
         gotBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("ListOnClick", "Inside this method");
+                Log.d(NAME, "Inside this method");
                 Intent intent = new Intent(v.getContext(), GotActivity.class);
                 startActivity(intent);
-                Log.d("ListOnClick", "Leaving this method");
+                Log.d(NAME, "Leaving this method");
             }
         });
         needBtn.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +37,6 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Log.d("ListOnCreate", "Leaving onCreate");
+        Log.d(NAME, "Leaving onCreate");
     }
 }

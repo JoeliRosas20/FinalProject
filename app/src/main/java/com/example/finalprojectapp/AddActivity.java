@@ -17,9 +17,13 @@ public class AddActivity extends AppCompatActivity {
     private EditText itemAdd;
     private Button addButt;
     private String itemAdded;
+    private final String NAME = "AddActivity";
+    public static final String ADDED = "itemAdded";
+    String item;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("onCreate", "Inside this method");
+        Log.d(NAME, "Inside onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
@@ -39,23 +43,27 @@ public class AddActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                Log.d(NAME, "Inside this method");
                 itemAdded = itemAdd.getText().toString();
-
+                Log.d(NAME, "Leaving this method with:"+itemAdded);
             }
         });
 
         addButt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("AddOnClick", "Inside this method");
-                Intent inty = new Intent(v.getContext(), GotActivity.class);
-
-                inty.putExtra("itemAdded", itemAdded);
-
-                startActivity(inty);
-                Log.d("AddOnClick", "Leaving this method with: " + itemAdded);
+                Log.d(NAME, "Inside onClick");
+                //Intent inty = new Intent(v.getContext(), GotActivity.class);
+                //item = itemAdd.getText().toString();
+                Intent inty = new Intent();
+                //inty.putExtra(ADDED, itemAdded);
+                inty.putExtra(ADDED, itemAdded);
+                setResult(RESULT_OK, inty);
+                //startActivity(inty);
+                Log.d(NAME, "Leaving onClick with: " + itemAdded);
+                finish();
             }
         });
-        Log.d("AddOnCreate", "Leaving this method");
+        Log.d(NAME, "Leaving onCreate");
     }
 }

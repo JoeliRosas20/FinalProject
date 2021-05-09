@@ -20,19 +20,20 @@ public class GotActivity extends AppCompatActivity {
     private TextView listNames;
 
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("GOT", "Inside onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.got_activity);
 
         addFloaty = findViewById(R.id.floaty);
         removeButt = findViewById(R.id.removeButt);
         listNames = findViewById(R.id.list);
-
+        //This FAB sends us to the add Activity
         addFloaty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent tent = new Intent(v.getContext(), AddActivity.class);
-                startActivity(tent);
-
+                //startActivity(tent);
+                startActivityForResult(tent, 1);
 
             }
         });
@@ -45,7 +46,21 @@ public class GotActivity extends AppCompatActivity {
             }
 
         });
-
+        Log.d("GOT", "Leaving onCreate");
     }
-    
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.d("Got", "Inside the onActivityResult");
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1){
+            if (resultCode == RESULT_OK){
+                String reply = data.getStringExtra(AddActivity.ADDED);
+                Log.d("Got", "Reply:"+reply);
+                listNames.setText(reply);
+                listNames.setVisibility(View.VISIBLE);
+            }
+        }
+        Log.d("Got", "Inside the onActivityResult");
+    }
 }
