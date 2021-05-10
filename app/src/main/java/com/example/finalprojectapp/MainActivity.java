@@ -132,4 +132,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void showInfo(MenuItem item) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Info");
+        builder.setMessage("Press the Button on the bottom right to create a new list.\n" +
+                "If you want to delete a list, press the remove button on the top right of each list.");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) { }
+        });
+        builder.show();
+    }
 }

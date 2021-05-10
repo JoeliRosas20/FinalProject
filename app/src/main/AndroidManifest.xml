@@ -55,6 +55,15 @@
                 android:value=".ListActivity">
             </meta-data>
         </activity>
+        <activity
+            android:name=".NeedAddActivity"
+            android:label="Need Add Activity"
+            android:parentActivityName=".NeedActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".NeedActivity">
+            </meta-data>
+        </activity>
     </application>
 
 </manifest>

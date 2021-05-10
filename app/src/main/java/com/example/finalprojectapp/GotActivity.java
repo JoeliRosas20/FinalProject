@@ -18,9 +18,10 @@ public class GotActivity extends AppCompatActivity {
     private FloatingActionButton addFloaty;
     private Button removeButt;
     private TextView listNames;
+    private static final String NAME = "GotActivity";
 
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("GOT", "Inside onCreate");
+        Log.d(NAME, "Inside onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.got_activity);
 
@@ -46,12 +47,12 @@ public class GotActivity extends AppCompatActivity {
             }
 
         });
-        Log.d("GOT", "Leaving onCreate");
+        Log.d(NAME, "Leaving onCreate");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        Log.d("Got", "Inside the onActivityResult");
+        Log.d(NAME, "Inside the onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1){
             if (resultCode == RESULT_OK){
@@ -61,6 +62,6 @@ public class GotActivity extends AppCompatActivity {
                 listNames.setVisibility(View.VISIBLE);
             }
         }
-        Log.d("Got", "Inside the onActivityResult");
+        Log.d(NAME, "Leaving the onActivityResult");
     }
 }

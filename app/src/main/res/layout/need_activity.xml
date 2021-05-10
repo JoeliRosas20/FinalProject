@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/need_sample"
+        android:id="@+id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Need List"
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/need_sample"/>
+        app:layout_constraintLeft_toRightOf="@id/list"/>
 
     <Button
         android:id="@+id/Need_remove"
@@ -29,7 +29,8 @@
         android:text="X"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/sample_radio"/>
+        app:layout_constraintLeft_toRightOf="@id/sample_radio"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/Need_floaty"
@@ -46,24 +47,35 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Store_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="630dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Search stores"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        android:onClick="SearchStore"/>
 
     <Button
+        android:id="@+id/Sites_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search sites"
         android:layout_marginTop="630dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="16dp"
+        android:text="Search sites"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/Need_floaty"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginRight="50dp"
+        android:onClick="SearchSite"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
