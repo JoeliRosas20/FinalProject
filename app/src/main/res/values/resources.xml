@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MySerifBold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="MySerifItalic">
+        <item name="android:textStyle">italic</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="MySerifNormal">
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+</resources>
