@@ -1,8 +1,17 @@
 package com.example.finalprojectapp;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,12 +19,14 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class NeedActivity extends AppCompatActivity {
     private FloatingActionButton addFloaty;
-    private Button removeButt;
+    private Button removeButt, Sites_btn, Store_btn;
     private TextView listNames;
     private static final String NAME = "GotActivity";
     ListItem item;
@@ -25,9 +36,19 @@ public class NeedActivity extends AppCompatActivity {
         Log.d(NAME, "Inside onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.need_activity);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         addFloaty = findViewById(R.id.Need_floaty);
         removeButt = findViewById(R.id.Need_remove);
+        Sites_btn = findViewById(R.id.Sites_btn);
+        Store_btn = findViewById(R.id.Store_btn);
         listNames = findViewById(R.id.list);
+
+        //Include the following 2 in NeedActivity and GotActivity
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //Store SharedPreference value here so that it goes into the helper
+        loadBCFromPref(sharedPreferences);
+
         addFloaty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +60,18 @@ public class NeedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        //notification button
+        Button createNotificationsButton = findViewById(R.id.button_notifications);
+
+        createNotificationsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(NAME, "Inside Notification onClick");
+                // intializes the function below
+                addNotifications();
             }
         });
         Log.d(NAME, "Leaving onCreate");
@@ -76,4 +109,63 @@ public class NeedActivity extends AppCompatActivity {
         startActivity(intent);
         Log.d(NAME, "Inside SearchSite method");
     }
+
+    private void addNotifications() {
+        Log.d(NAME, "Inside addNotifications");
+        //Add as a Notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = new NotificationChannel("primary_notification_channel", "Need Notification", NotificationManager.IMPORTANCE_HIGH);
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setDescription("Notifies every 15 minutes to stand up and walk");
+            manager.createNotificationChannel(notificationChannel);
+        }
+        // Building the notifications
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setContentTitle("Final Project Notifications")
+                .setContentText("An item has just been added, check it out ")
+                .setContentText("Hypebeast shoes has been added to your shopping list");
+
+        // Creates the intent needed to show the notifications
+        Intent notificationIntent = new Intent(this, NeedActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this,0,notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+
+        manager.notify(0,builder.build());
+        Log.d(NAME, "Leaving addNotifications");
+
+
+
+    }
+
+    private void loadBCFromPref(SharedPreferences sharedPreferences) {
+        changeBC(sharedPreferences.getString(getString(R.string.color_choices), "#0000FF"));
+    }
+
+    private void changeBC(String color) {
+        switch (color) {
+            case "#0000FF":
+                removeButt.setBackgroundColor(Color.BLUE);
+                Sites_btn.setBackgroundColor(Color.BLUE);
+                Store_btn.setBackgroundColor(Color.BLUE);
+                break;
+            case "#FFFF0059":
+                removeButt.setBackgroundColor(Color.RED);
+                Sites_btn.setBackgroundColor(Color.BLUE);
+                Store_btn.setBackgroundColor(Color.BLUE);
+                break;
+            case "#FF00FF5D":
+                removeButt.setBackgroundColor(Color.GREEN);
+                Sites_btn.setBackgroundColor(Color.BLUE);
+                Store_btn.setBackgroundColor(Color.BLUE);
+                break;
+            default:
+                break;
+        }
+    }
+
 }

@@ -3,6 +3,7 @@ package com.example.finalprojectapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -42,6 +44,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.listItemHolder
     public listItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d(NAME, "Inside onCreateViewHolder");
         return new listItemHolder(LayoutInflater.from(context).inflate(R.layout.list_item, parent, false));
+
+
     }
 
     @Override

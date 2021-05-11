@@ -32,10 +32,6 @@ public class AddActivity extends AppCompatActivity {
         itemAdd = findViewById(R.id.adds);
         addButt = findViewById(R.id.addButt);
 
-        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-
         itemAdd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -72,7 +68,6 @@ public class AddActivity extends AppCompatActivity {
         });
         Log.d(NAME, "Leaving onCreate");
     }
-
     private void whichColor(SharedPreferences sharedPreferences){
 
 
