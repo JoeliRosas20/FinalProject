@@ -1,5 +1,6 @@
 package com.example.finalprojectapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
@@ -56,6 +58,36 @@ public class GotActivity extends AppCompatActivity {
 
         });
         Log.d(NAME, "Leaving onCreate");
+        listNames.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                AlertDialog.Builder buildy = new AlertDialog.Builder(GotActivity.this);
+
+                buildy.setMessage("Are you sure you want to remove this?")
+                        .setTitle("Remove")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                listNames.setVisibility(View.GONE);
+
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                listNames.setVisibility(View.VISIBLE);
+                            }
+
+                        });
+
+
+
+
+                return true;
+            }
+        });
     }
 
     @Override

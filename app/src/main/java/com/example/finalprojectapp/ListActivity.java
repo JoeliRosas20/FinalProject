@@ -46,17 +46,6 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //notification button
-        Button createNotificationsButton = findViewById(R.id.button_listactivity);
-
-        createNotificationsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(NAME, "Inside Notification onClick");
-                // intializes the function below
-                addNotifications();
-            }
-        });
         //Include the following 2 in NeedActivity and GotActivity
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -65,31 +54,6 @@ public class ListActivity extends AppCompatActivity {
         Log.d(NAME, "Leaving onCreate");
     }
 
-    private void addNotifications() {
-        Log.d(NAME, "Inside addNotifications");
-        /*
-        // Building the notifications
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher_round)
-                .setContentTitle("Final Project Notifications")
-                .setContentText("An item has just been added, check it out ")
-                .setContentText("Hypebeast shoes has been added to your shopping list");
-
-        // Creates the intent needed to show the notifications
-        Intent notificationIntent = new Intent(this, ListActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(this,0,notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(contentIntent);
-
-        //Add as a Notification
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(0,builder.build());
-        */
-
-        Log.d(NAME, "Leaving addNotifications");
-
-
-
-    }
     //These are the helpers used to change the background colors of the buttons
     //Since you want to change the buttons in Got and Need, make these helpers in
     //NeedActivity and GotActivity
