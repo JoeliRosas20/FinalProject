@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:id="@string/color_choices"
+        android:defaultValue="#0000FF"
+        android:entries="@array/color_entries"
+        android:entryValues="@array/color_values"
+        android:key="@string/color_choices"
+        android:title="Button Color">
+    </ListPreference>
+
+    <ListPreference
+        android:id="@string/font_options"
+        android:defaultValue="R.style.MySerifNormal"
+        android:entries="@array/font_entries_1"
+        android:entryValues="@array/font_values"
+        android:key="@string/font_options"
+        android:title="Font Options">
+    </ListPreference>
+
+</PreferenceScreen>
