@@ -3,6 +3,7 @@ package com.example.finalprojectapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -65,5 +66,14 @@ public class AddActivity extends AppCompatActivity {
             }
         });
         Log.d(NAME, "Leaving onCreate");
+    }
+    private void whichColor(SharedPreferences sharedPreferences){
+
+
+    }
+
+    private void changeButtonColor(String color) {
+        addButt.setBackgroundColor(Integer.parseInt(color));
+
     }
 }

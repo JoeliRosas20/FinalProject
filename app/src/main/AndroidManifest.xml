@@ -64,6 +64,14 @@
                 android:value=".NeedActivity">
             </meta-data>
         </activity>
+        <activity
+            android:name=".SettingActivity"
+            android:label="Settings Activity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
     </application>
 
 </manifest>

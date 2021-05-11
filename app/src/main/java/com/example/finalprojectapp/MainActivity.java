@@ -1,18 +1,17 @@
 package com.example.finalprojectapp;
 
-import android.content.ContentValues;
 import android.content.DialogInterface;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +21,7 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,12 +33,16 @@ public class MainActivity extends AppCompatActivity {
     LinkedList<ListItem> mList;
     RecyclerView recyclerView;
     ListAdapter listAdapter;
+    Button got;
+    Button need;
     private static final String NAME = "MAIN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(NAME, "Inside onCreate");
         super.onCreate(savedInstanceState);
+        got = findViewById(R.id.got_button);
+        need = findViewById(R.id.need_button);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -58,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setVisibility(View.VISIBLE);
         recyclerView.setAdapter(listAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String storecolor = sharedPreferences.getString(getString(R.string.color_choices),"#0000FF");
+
         Log.d(NAME, "Leaving the onCreate");
     }
 
@@ -115,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingActivity.class);
+            startActivity(intent);
             return true;
         }
         if (id == R.id.info){
@@ -143,4 +154,6 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.show();
     }
+
+
 }

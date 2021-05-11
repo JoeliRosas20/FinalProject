@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="color_entries">
+        <item>Blue</item>
+        <item>Red</item>
+        <item>Green</item>
+    </string-array>
+
+    <string-array name="color_values">
+        <item>#0000FF</item>
+        <item>#FFFF0059</item>
+        <item>#FF00FF5D</item>
+    </string-array>
+
+    <string-array name="font_entries">
+        <item>Serif Bold</item>
+        <item>Serif Italic</item>
+        <item>Serif Normal</item>
+    </string-array>
+
+    <string-array name="font_values">
+        <item>R.style.MySerifBold</item>
+        <item>R.style.MySerifItalic</item>
+        <item>R.style.MySerifNormal</item>
+    </string-array>
+
+    <string-array name="font_entries_1">
+        <item>Serif Bold</item>
+        <item>Serif Italic</item>
+        <item>Serif Normal</item>
+    </string-array>
+
+
+
+</resources>
