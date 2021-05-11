@@ -1,8 +1,16 @@
 package com.example.finalprojectapp;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +18,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -25,6 +34,7 @@ public class NeedActivity extends AppCompatActivity {
         Log.d(NAME, "Inside onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.need_activity);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         addFloaty = findViewById(R.id.Need_floaty);
         removeButt = findViewById(R.id.Need_remove);
         listNames = findViewById(R.id.list);
@@ -39,6 +49,18 @@ public class NeedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        //notification button
+        Button createNotificationsButton = findViewById(R.id.button_notifications);
+
+        createNotificationsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(NAME, "Inside Notification onClick");
+                // intializes the function below
+                addNotifications();
             }
         });
         Log.d(NAME, "Leaving onCreate");
@@ -75,5 +97,37 @@ public class NeedActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
         startActivity(intent);
         Log.d(NAME, "Inside SearchSite method");
+    }
+
+    private void addNotifications() {
+        Log.d(NAME, "Inside addNotifications");
+        //Add as a Notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = new NotificationChannel("primary_notification_channel", "Need Notification", NotificationManager.IMPORTANCE_HIGH);
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setDescription("Notifies every 15 minutes to stand up and walk");
+            manager.createNotificationChannel(notificationChannel);
+        }
+        // Building the notifications
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setContentTitle("Final Project Notifications")
+                .setContentText("An item has just been added, check it out ")
+                .setContentText("Hypebeast shoes has been added to your shopping list");
+
+        // Creates the intent needed to show the notifications
+        Intent notificationIntent = new Intent(this, NeedActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this,0,notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+
+        manager.notify(0,builder.build());
+        Log.d(NAME, "Leaving addNotifications");
+
+
+
     }
 }
