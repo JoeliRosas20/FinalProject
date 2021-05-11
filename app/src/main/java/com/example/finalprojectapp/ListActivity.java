@@ -2,6 +2,7 @@ package com.example.finalprojectapp;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,6 +22,7 @@ public class ListActivity extends AppCompatActivity {
     private Button gotBtn;
     private Button needBtn;
     private final String NAME = "ListActivity";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         Log.d(NAME, "Inside onCreate");
@@ -65,6 +67,7 @@ public class ListActivity extends AppCompatActivity {
 
     private void addNotifications() {
         Log.d(NAME, "Inside addNotifications");
+        /*
         // Building the notifications
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
@@ -80,6 +83,8 @@ public class ListActivity extends AppCompatActivity {
         //Add as a Notification
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(0,builder.build());
+        */
+
         Log.d(NAME, "Leaving addNotifications");
 
 
@@ -109,4 +114,5 @@ public class ListActivity extends AppCompatActivity {
                 break;
         }
     }
+
 }

@@ -62,11 +62,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setVisibility(View.VISIBLE);
         recyclerView.setAdapter(listAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        String storecolor = sharedPreferences.getString(getString(R.string.color_choices),"#0000FF");
-
         Log.d(NAME, "Leaving the onCreate");
     }
 

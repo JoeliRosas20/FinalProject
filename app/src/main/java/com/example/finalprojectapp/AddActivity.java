@@ -31,6 +31,7 @@ public class AddActivity extends AppCompatActivity {
         itemAdd = findViewById(R.id.adds);
         addButt = findViewById(R.id.addButt);
 
+
         itemAdd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

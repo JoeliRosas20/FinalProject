@@ -1,6 +1,8 @@
 package com.example.finalprojectapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import com.example.finalprojectapp.AddActivity;
 import com.example.finalprojectapp.R;
@@ -28,6 +31,11 @@ public class GotActivity extends AppCompatActivity {
         addFloaty = findViewById(R.id.floaty);
         removeButt = findViewById(R.id.removeButt);
         listNames = findViewById(R.id.list);
+        //Include the following 2 in NeedActivity and GotActivity
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //Store SharedPreference value here so that it goes into the helper
+        loadBCFromPref(sharedPreferences);
         //This FAB sends us to the add Activity
         addFloaty.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,5 +71,24 @@ public class GotActivity extends AppCompatActivity {
             }
         }
         Log.d(NAME, "Leaving the onActivityResult");
+    }
+    private void loadBCFromPref(SharedPreferences sharedPreferences) {
+        changeBC(sharedPreferences.getString(getString(R.string.color_choices), "#0000FF"));
+    }
+
+    private void changeBC(String color) {
+        switch (color) {
+            case "#0000FF":
+                removeButt.setBackgroundColor(Color.BLUE);
+                break;
+            case "#FFFF0059":
+                removeButt.setBackgroundColor(Color.RED);
+                break;
+            case "#FF00FF5D":
+                removeButt.setBackgroundColor(Color.GREEN);
+                break;
+            default:
+                break;
+        }
     }
 }
