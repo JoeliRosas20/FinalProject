@@ -19,6 +19,59 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ListActivity"
+            android:label="List Activity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity">
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".GotActivity"
+            android:label="Got Activity"
+            android:parentActivityName=".ListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListActivity">
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".AddActivity"
+            android:label="Add Activity"
+            android:parentActivityName=".GotActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".GotActivity">
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".NeedActivity"
+            android:label="Need Activity"
+            android:parentActivityName=".ListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListActivity">
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".NeedAddActivity"
+            android:label="Need Add Activity"
+            android:parentActivityName=".NeedActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".NeedActivity">
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".SettingActivity"
+            android:label="Settings Activity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
     </application>
 
 </manifest>
