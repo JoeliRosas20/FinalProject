@@ -7,4 +7,10 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/info"
+        android:title="Info"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_info"
+        android:onClick="showInfo"/>
 </menu>
